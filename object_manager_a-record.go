@@ -154,6 +154,32 @@ func (objMgr *ObjectManager) GetARecord(dnsview string, recordName string, ipAdd
 	return &res[0], nil
 }
 
+func (objMgr *ObjectManager) GetARecordByZone(zone_name string, dnsview string) (*[]RecordA, error) {
+	var res []RecordA
+	recordA := NewEmptyRecordA()
+
+	if dnsview == "" {
+		dnsview = "default"
+	}
+
+	if zone_name == "" {
+		return nil, fmt.Errorf("zone_name must not be empty")
+	}
+
+	sf := map[string]string{
+		"zone": zone_name,
+		"view": dnsview,
+	}
+	queryParams := NewQueryParams(false, sf)
+	err := objMgr.connector.GetObject(recordA, "", queryParams, &res)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
 func (objMgr *ObjectManager) GetARecordByRef(ref string) (*RecordA, error) {
 	recordA := NewEmptyRecordA()
 	err := objMgr.connector.GetObject(
