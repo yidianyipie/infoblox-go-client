@@ -1,4 +1,4 @@
-module github.com/infobloxopen/infoblox-go-client/v2
+module github.com/yidianyipie/infoblox-go-client
 
 go 1.17
 
