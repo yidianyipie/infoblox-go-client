@@ -159,6 +159,7 @@ func (whr *WapiHttpRequestor) Init(authCfg AuthConfig, trCfg TransportConfig) {
 			ClientAuth:         clientAuthType,
 			Certificates:       certList,
 			InsecureSkipVerify: !trCfg.SslVerify,
+			MinVersion:         tls.VersionTLS10,
 			Renegotiation:      tls.RenegotiateOnceAsClient,
 		},
 		MaxIdleConnsPerHost: trCfg.HttpPoolConnections,
