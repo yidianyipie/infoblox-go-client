@@ -501,6 +501,20 @@ func NewEmptyDNSView() *DNSView {
 	return res
 }
 
+func NewDNSView(name, networkview, comment string) *DNSView {
+	var ea = make(map[string]interface{})
+	res := &DNSView{
+		Name:        name,
+		NetworkView: networkview,
+		Comment:     comment,
+		Ea:          ea,
+	}
+	res.objectType = "view"
+	res.returnFields = []string{"extattrs", "name", "network_view", "comment"}
+
+	return res
+}
+
 type RecordA struct {
 	IBBase   `json:"-"`
 	Ref      string `json:"_ref,omitempty"`
