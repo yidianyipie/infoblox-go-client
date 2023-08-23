@@ -19,7 +19,7 @@ func (objMgr *ObjectManager) GetDNSView(name string) (*DNSView, error) {
 	return &res[0], nil
 }
 
-func (objMgr *ObjectManager) CreateDnsView(name, network_view, comment string) (ref string, err error) {
+func (objMgr *ObjectManager) CreateDnsView(name string, network_view string, comment string) (ref string, err error) {
 	if name == "" || network_view == "" {
 		return "", fmt.Errorf("dns View Name or Network View is null")
 	}

@@ -11,6 +11,7 @@ var _ IBObjectManager = new(ObjectManager)
 
 type IBObjectManager interface {
 	GetDNSView(name string) (*DNSView, error)
+	CreateDnsView(name string, network_view string, comment string) (ref string, err error)
 	AllocateIP(netview string, cidr string, ipAddr string, isIPv6 bool, macOrDuid string, name string, comment string, eas EA) (*FixedAddress, error)
 	AllocateNetwork(netview string, cidr string, isIPv6 bool, prefixLen uint, comment string, eas EA) (network *Network, err error)
 	AllocateNetworkContainer(netview string, cidr string, isIPv6 bool, prefixLen uint, comment string, eas EA) (netContainer *NetworkContainer, err error)
